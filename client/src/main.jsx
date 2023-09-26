@@ -4,6 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './Layout/Layout.jsx';
 import Home from './Pages/Home';
+import DeleteEvent from './pages/DeleteEvent';
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,11 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
-      }
+      },
+      {
+        path: '/delete/:id',
+        element: <DeleteEvent />
+      },
     ]
   }
 ])

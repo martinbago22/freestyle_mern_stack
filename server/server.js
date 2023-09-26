@@ -21,6 +21,15 @@ app.get('/api/events', async (req, res, next) => {
   }
 });
 
+app.delete('/api/:id', async (req, res, next) => {
+  try {
+    const deletedEvent = await Event.findByIdAndDelete(req.params.id);
+    return res.json(deletedEvent);
+  } catch (err) {
+    return next(err);
+  }
+});
+
 
 async function main() {
   await mongoose.connect(MONGO_URL);
