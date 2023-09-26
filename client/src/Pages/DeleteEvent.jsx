@@ -10,7 +10,6 @@ export default function DeleteEvent() {
       headers: { 'Content-Type': 'application/json' }
     });
     if (response.ok) {
-      console.log('yey');
       navigate('/');
     }
   }
