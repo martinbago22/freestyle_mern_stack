@@ -1,4 +1,6 @@
-export default function EventDetails({ event }) {
+import { Link } from "react-router-dom"
+
+export default function EventDetails({ event, onDelete }) {
   return (
     <div className="Event">
       <div className="EventName">{event.name}</div>
@@ -23,7 +25,7 @@ export default function EventDetails({ event }) {
       </div>
       <div className="EventDetails">{event.details}</div>
       <div className="EventButtons">
-        <button>DEL</button>
+        <Link to={`/delete/${event._id}`}><button>DEL</button></Link>
         <button>EDIT</button>
       </div>
     </div>
