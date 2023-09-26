@@ -13,7 +13,6 @@ export default defineConfig({
       },
       '/public': {
         target: 'http://localhost:5000',
-        
       }
     }
   }

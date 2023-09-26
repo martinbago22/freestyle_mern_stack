@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import './Layout.css'
-import { Outlet } from 'react-router-dom';
-import Event from '../components/Event';
+import { Outlet, Link } from 'react-router-dom';
 
 
 
@@ -11,11 +9,12 @@ function Layout() {
       <div className='Layout'>
         <nav>
           <ul>
-            <li className='Home'>KAKI</li>
+            <li className='Home'>
+              <Link to='/'>Home</Link>
+            </li>
           </ul>
         </nav>
         <Outlet />
-        <Event event={event}></Event>
        </div>
   )
 }

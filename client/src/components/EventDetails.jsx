@@ -1,9 +1,9 @@
-export default function Event({ event }) {
+export default function EventDetails({ event }) {
   return (
     <div className="Event">
       <div className="EventName">{event.name}</div>
       <div className="EventIMG">
-        <img src={event.image}></img>
+        <img src='/event.png'></img>
       </div>
       <div className="EventInfo">
         <ul>
