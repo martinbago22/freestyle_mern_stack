@@ -1,0 +1,31 @@
+.Event{
+  border-style: solid;
+  border-width: 1px;
+  width: 550px;
+  margin: 20px;
+}
+
+.EventName{
+  background-color: rgb(198, 23, 23);
+  height: 40px;
+  padding: 5px;
+  color: white;
+  font-size: 25px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+.EventButtons{
+  padding: 5px;
+  text-align: right;
+}
+
+.EventButton{
+  margin: 10px 5px 5px 5px;
+  background-color: rgb(198, 23, 23);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.EventButton:hover{
+  background-color: rgb(253, 87, 87);
+}

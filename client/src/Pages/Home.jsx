@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import EventDetails from "../components/EventDetails";
+import EventDetails from "../components/eventDetail/EventDetails";
 
 export default function Home() {
 

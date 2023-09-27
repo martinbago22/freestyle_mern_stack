@@ -1,4 +1,4 @@
-import ConfirmDelete from "../components/ConfirmDelete";
+import ConfirmDelete from "../components/confirmDelete/ConfirmDelete";
 import { useNavigate } from "react-router-dom";
 
 export default function DeleteEvent() {
