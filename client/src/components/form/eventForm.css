@@ -1,0 +1,43 @@
+.control{
+  margin: 10px;
+}
+
+input{
+  border-radius: 5px;
+}
+
+form{
+  width: 400px;
+  background-color: rgb(50, 47, 47);
+  border-radius: 5px;
+  color: rgb(230, 230, 230);
+  padding: 10px;
+  margin: 10px;
+  font-size: 18px;
+}
+
+.FormButton{
+  margin: 10px 5px 5px 5px;
+  background-color: rgb(198, 23, 23);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.FormButton:hover{
+  background-color: rgb(253, 87, 87);
+  font-weight: bold;
+}
+
+.controlDetails{
+  text-align: center;
+}
+
+#eventDetails{
+  width: 360px;
+  height: 200px;
+}
+
+.FormButtonContainer{
+  text-align: center;
+}

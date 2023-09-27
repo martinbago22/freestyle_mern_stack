@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './eventForm.css'
 
 export default function Form({ event, onSave }) { // Ha upgradelünk az event propban érkezne a szerkeszteni kívánt event
 
@@ -15,7 +16,7 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
     return (
         <form onSubmit={(e) => onSave(e, formData)}>
             <div className='control'>
-                <label htmlFor='eventName'>Name:</label>
+                <label htmlFor='eventName'>Name: </label>
                 <input
                     type="text"
                     name="name"
@@ -25,7 +26,7 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
                 />
             </div>
             <div className='control'>
-                <label htmlFor='eventLocation'>Location:</label>
+                <label htmlFor='eventLocation'>Location: </label>
                 <input
                     type="text"
                     name="location"
@@ -35,7 +36,7 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
                 />
             </div>
             <div className='control'>
-                <label htmlFor='eventDate'>Date:</label>
+                <label htmlFor='eventDate'>Date: </label>
                 <input
                     type="date"
                     name="date"
@@ -45,17 +46,7 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
                 />
             </div>
             <div className='control'>
-                <label htmlFor='eventDetails'>Details:</label>
-                <input
-                    type="text"
-                    name="details"
-                    id='eventDetails'
-                    defaultValue={event ? event.details : ''}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <div className='control'>
-                <label htmlFor='eventPrice'>Price:</label>
+                <label htmlFor='eventPrice'>Price: </label>
                 <input
                     type="number"
                     name="price"
@@ -65,7 +56,7 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
                 />
             </div>
             <div className='control'>
-                <label htmlFor='eventAvailable'>Available:</label>
+                <label htmlFor='eventAvailable'>Available: </label>
                 <input
                     type="number"
                     name="available"
@@ -74,8 +65,18 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
                     onChange={handleInputChange}
                 />
             </div>
-            <div className='FormButton'>
-                <button type="submit">Submit</button>
+            <div className='controlDetails'>
+                <label htmlFor='eventDetails'>Details: </label>
+                <input
+                    type="text"
+                    name="details"
+                    id='eventDetails'
+                    defaultValue={event ? event.details : ''}
+                    onChange={handleInputChange}
+                />
+            </div>
+            <div className='FormButtonContainer'>
+                <button className='FormButton' type="submit">Submit</button>
             </div>
         </form>
     )

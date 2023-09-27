@@ -4,6 +4,7 @@ import Form from "../components/form/Form";
 import fetchByMethod from "../functions/fetchByMethod";
 import { useNavigate } from "react-router-dom";
 
+
 export default function EventUpdater() {
 
   const [event, setEvent] = useState(null);
@@ -32,6 +33,6 @@ export default function EventUpdater() {
   }
 
   return (
-    event ? <Form event={event} onSave={handleUpdate} /> : <div>Loading...</div>
+    event ? <div className="FormContainer"><Form event={event} onSave={handleUpdate} /></div> : <div>Loading...</div>
   )
 }
