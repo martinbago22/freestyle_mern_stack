@@ -6,7 +6,7 @@ export default function EventDetails({ event, onDelete }) {
     <div className="Event">
       <div className="EventName">{event.name}</div>
       <div className="EventIMG">
-        <img src='/event.png'></img>
+        <img src={event.image}></img>
       </div>
       <div className="EventInfo">
         <ul>
