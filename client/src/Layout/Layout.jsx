@@ -12,6 +12,9 @@ function Layout() {
             <li className='Home'>
               <Link to='/'>Home</Link>
             </li>
+            <li className='EventCreator'>
+              <Link to='/newEvent'>Add Event</Link>
+            </li>
           </ul>
         </nav>
         <Outlet />
