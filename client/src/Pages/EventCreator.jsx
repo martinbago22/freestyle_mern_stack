@@ -1,4 +1,4 @@
-import Form from "../components/form/Form";
+import Form from "../components/eventform/Form";
 import { useNavigate } from "react-router-dom";
 import fetchByMethod from "../functions/fetchByMethod";
 
