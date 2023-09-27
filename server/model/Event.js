@@ -5,7 +5,7 @@ const eventSchema = new Schema({
   name: String,
   image: {
     type: String,
-    default: 'event.png',
+    default: '/public/event.png',
   },
   date: Date,
   details: String,
