@@ -15,9 +15,19 @@ app.use('/public/', express.static(path.resolve('./public')));
 app.get('/api/events', async (req, res, next) => {
   try {
     const allEvenets = await Event.find();
-    res.json(allEvenets);
+    return res.json(allEvenets);
   } catch (err) {
-    next(err);
+    return next(err);
+  }
+});
+
+app.get('/api/events/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const event = await Event.findById(id);
+    return res.json(event);
+  } catch (err) {
+    return next(err);
   }
 });
 
@@ -31,7 +41,6 @@ app.delete('/api/:id', async (req, res, next) => {
 });
 
 app.post('/api/events', async (req, res) => {
-  console.log('fut a postos endpoint');
   try {
     const name = req.body.name;
     const image = req.body.image;
@@ -50,29 +59,22 @@ app.post('/api/events', async (req, res) => {
       available,
     });
     const events = await newEvent.save();
-    res.json(events);
+    return res.json(events);
   } catch (error) {
     console.error(error);
-    res.status(400).json({ success: false });
+    return res.status(400).json({ success: false });
   }
 });
 
 app.patch('/api/events/:id', async (req, res) => {
-  console.log('fut a postos endpoint');
   try {
-    const event = await Event.findById(req.params.id);
-    event.name = req.body.name;
-    event.image = req.body.image;
-    event.date = req.body.date;
-    event.details = req.body.details;
-    event.price = req.body.price;
-    event.location = req.body.location;
-    event.available = req.body.available;
-    const events = await event.save();
-    res.json(events);
+    const event = await Event.updateOne(
+      { _id: req.params.id },
+      { $set: req.body });
+    return res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.status(400).json({ success: false });
+    return res.status(400).json({ success: false });
   }
 });
 
