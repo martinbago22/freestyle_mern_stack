@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import './EventDetail.css'
 
 export default function EventDetails({ event, onDelete }) {
   return (
@@ -25,8 +26,8 @@ export default function EventDetails({ event, onDelete }) {
       </div>
       <div className="EventDetails">{event.details}</div>
       <div className="EventButtons">
-        <Link to={`/delete/${event._id}`}><button>DEL</button></Link>
-        <button>EDIT</button>
+        <Link to={`/delete/${event._id}`}><button className="EventButton">DEL</button></Link>
+        <button className="EventButton">EDIT</button>
       </div>
     </div>
   )
