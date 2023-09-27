@@ -13,7 +13,7 @@ function Layout() {
               <Link to='/'>Home</Link>
             </li>
             <li className='EventCreator'>
-              <Link to='/newEvent'>Add Event</Link>
+              <Link to='/event/new'>Add Event</Link>
             </li>
           </ul>
         </nav>

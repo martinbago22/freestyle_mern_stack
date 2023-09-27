@@ -6,6 +6,7 @@ import Layout from './Layout/Layout.jsx';
 import Home from './Pages/Home';
 import DeleteEvent from './Pages/DeleteEvent';
 import EventCreator from './Pages/EventCreator';
+import EventUpdater from './pages/EventUpdater';
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,12 @@ const router = createBrowserRouter([
         element: <DeleteEvent />
       },
       {
-        path: '/newEvent',
+        path: '/event/new',
         element: <EventCreator />
+      },
+      {
+        path: '/event/update/:id',
+        element: <EventUpdater />
       }
     ]
   }

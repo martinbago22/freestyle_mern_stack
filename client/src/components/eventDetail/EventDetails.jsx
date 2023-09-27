@@ -6,7 +6,7 @@ export default function EventDetails({ event, onDelete }) {
     <div className="Event">
       <div className="EventName">{event.name}</div>
       <div className="EventIMG">
-        <img src='/event.png'></img>
+        <img src={event.image}></img>
       </div>
       <div className="EventInfo">
         <ul>
@@ -27,7 +27,7 @@ export default function EventDetails({ event, onDelete }) {
       <div className="EventDetails">{event.details}</div>
       <div className="EventButtons">
         <Link to={`/delete/${event._id}`}><button className="EventButton">DEL</button></Link>
-        <button className="EventButton">EDIT</button>
+        <Link to={`/event/update/${event._id}`} ><button className="EventButton">EDIT</button></Link>
       </div>
     </div>
   )
