@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Form from "../components/form/Form";
+import Form from "../components/eventform/Form";
 import fetchByMethod from "../functions/fetchByMethod";
 import { useNavigate } from "react-router-dom";
+import Notify from "../components/notify/Notify";
 
 export default function EventUpdater() {
 
   const [event, setEvent] = useState(null);
+  const [updatedEvent, setUpdatedEvent] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -24,14 +26,15 @@ export default function EventUpdater() {
     try {
       const response = await fetchByMethod(`/api/events/${id}`, 'PATCH', event);
       if (response.ok) {
-        navigate('/');
+        setUpdatedEvent(true);
       }
     } catch (err) {
       console.error(err);
     }
   }
 
-  return (
-    event ? <Form event={event} onSave={handleUpdate} /> : <div>Loading...</div>
-  )
+  return updatedEvent ? (<Notify></Notify>)
+    : (
+      event ? <Form event={event} onSave={handleUpdate} /> : <div>Loading...</div>
+    )
 }
