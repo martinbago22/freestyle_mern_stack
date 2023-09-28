@@ -30,7 +30,6 @@ function handleEventSearch(model) {
     }
     if (date) {
       findObject = {date: new Date(date)};
-      console.log(findObject);
     }
     if (minPrice || maxPrice) {
       findObject = {price: {$lt: maxPrice ? maxPrice : Infinity, $gt: minPrice ? minPrice : 0}};
