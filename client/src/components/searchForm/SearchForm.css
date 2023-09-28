@@ -1,0 +1,12 @@
+#MinPrice {
+  width: 40px;
+
+}
+
+#MaxPrice {
+  width: 40px;
+}
+
+label {
+  margin-left: 10px;
+}

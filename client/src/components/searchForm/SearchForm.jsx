@@ -1,6 +1,7 @@
 import { useState } from "react"
+import './SearchForm.css';
 
-export default function SearchForm() {
+export default function SearchForm({ onSearch }) {
 
   const [userSearch, setUserSearch] = useState({});
 
@@ -12,9 +13,15 @@ export default function SearchForm() {
     });
   }
 
+  function handleClick(e) {
+    e.preventDefault();
+    const result = new URLSearchParams(userSearch).toString();
+    onSearch(result);
+  }
+
   return (
     <div className="SearchForm">
-      <form>
+      <form onSubmit={e => handleClick(e)}>
         <div className="control">
           <label htmlFor="SearchLocation">Location: </label>
           <input
@@ -34,23 +41,25 @@ export default function SearchForm() {
           />
         </div>
         <div className="control">
-          <label htmlFor="SearchPrice">Price: </label>
+          <label>Price: </label>
+          <label htmlFor="MinPrice">min </label>
           <input
-            id="SearchPrice"
-            name="price"
+            id="MinPrice"
+            name='minPrice'
+            type="number"
+            
+            onChange={e => handleInputChange(e)}
+          />
+          <label htmlFor="MaxPrice">max </label>
+          <input
+            id="MaxPrice"
+            name="maxPrice"
             type="number"
             onChange={e => handleInputChange(e)}
           />
-          <label htmlFor="MaxCheck">Max</label>
-          <input
-            id="MaxCheck"
-            type="checkbox"
-          />
-          <label htmlFor="MinCheck">Min</label>
-          <input
-            id="MinCheck"
-            type="checkbox"
-          />
+        </div>
+        <div className='SearchButtonContainer'>
+          <button className='SearchButton' type="submit">Search</button>
         </div>
       </form>
     </div>
