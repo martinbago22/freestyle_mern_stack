@@ -26,4 +26,5 @@ a:visited {
 
 .Layout{
   background-image: url('https://cdn.pixabay.com/photo/2020/07/17/23/17/pattern-5415668_640.png');
+  min-height: 100vh;
 }
