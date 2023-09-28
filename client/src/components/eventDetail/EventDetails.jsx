@@ -12,7 +12,7 @@ export default function EventDetails({ event, onDelete }) {
         <ul>
           <li>
             <label>Date: </label>
-            {event.date}
+            {event.date.slice(0,10)}
           </li>
           <li>
             <label>Location: </label>
