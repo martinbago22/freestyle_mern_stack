@@ -9,4 +9,4 @@ Content-Type: application/json
 "available": "125"}
 
 ###
-GET http://localhost:5000/api/events?location=Sonkád
+GET http://localhost:5000/api/events?location=Sonkád&minPrice=200
