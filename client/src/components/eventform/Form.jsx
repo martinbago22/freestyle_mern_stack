@@ -67,12 +67,21 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
             </div>
             <div className='controlDetails'>
                 <label htmlFor='eventDetails'>Details: </label>
-                <input
+                {/* <input
                     type="text"
                     name="details"
                     id='eventDetails'
                     defaultValue={event ? event.details : ''}
                     onChange={handleInputChange}
+                /> */}
+                <textarea
+                    type="text"
+                    name="details"
+                    id='eventDetails'
+                    defaultValue={event ? event.details : ''}
+                    onChange={handleInputChange}
+                    rows='6'
+                    cols='40'
                 />
             </div>
             <div className='FormButtonContainer'>
