@@ -4,12 +4,12 @@ import Form from "../components/eventform/Form";
 import fetchByMethod from "../functions/fetchByMethod";
 import Notify from "../components/notify/Notify";
 
-
 export default function EventUpdater() {
 
   const [event, setEvent] = useState(null);
   const [updatedEvent, setUpdatedEvent] = useState(false);
   const { id } = useParams();
+
 
   useEffect(() => {
     async function fetchEvent() {
