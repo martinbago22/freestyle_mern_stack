@@ -10,3 +10,20 @@
 label {
   margin-left: 10px;
 }
+
+.SearchButton{
+  margin: 10px 5px 5px 5px;
+  background-color: rgb(198, 23, 23);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.SearchButton:hover{
+  background-color: rgb(253, 87, 87);
+  font-weight: bold;
+}
+
+.SearchButtonContainer{
+  text-align: center;
+}
