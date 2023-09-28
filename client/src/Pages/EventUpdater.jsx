@@ -5,6 +5,7 @@ import fetchByMethod from "../functions/fetchByMethod";
 import { useNavigate } from "react-router-dom";
 import Notify from "../components/notify/Notify";
 
+
 export default function EventUpdater() {
 
   const [event, setEvent] = useState(null);
@@ -33,8 +34,9 @@ export default function EventUpdater() {
     }
   }
 
+
   return updatedEvent ? (<Notify></Notify>)
     : (
-      event ? <Form event={event} onSave={handleUpdate} /> : <div>Loading...</div>
+      event ? <div className="FormContainer"><Form event={event} onSave={handleUpdate} /></div> : <div>Loading...</div>
     )
 }

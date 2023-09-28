@@ -1,6 +1,7 @@
 import Form from "../components/eventform/Form";
 import { useNavigate } from "react-router-dom";
 import fetchByMethod from "../functions/fetchByMethod";
+import './pages.css';
 
 export default function EventCreator() {
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ export default function EventCreator() {
     }
   }
   return (
+    <div className="FormContainer">
     <Form onSave={handleSubmit}></Form>
+    </div>
   )
 }
