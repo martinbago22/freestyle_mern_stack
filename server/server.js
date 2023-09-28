@@ -28,7 +28,6 @@ function handleEventSearch(model) {
     if (minPrice || maxPrice) {
       findObject.price = {$lt: maxPrice ? maxPrice : Infinity, $gt: minPrice ? minPrice : 0};
     }
-    console.log(findObject);
     const query = await model.find(findObject);
     return res.json(query);
   };
