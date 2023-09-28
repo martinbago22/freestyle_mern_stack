@@ -13,30 +13,24 @@ app.use(express.json());
 app.use('/public/', express.static(path.resolve('./public')));
 
 
-app.get('/api/events', handleEventSearch(Event), async (req, res, next) => {
-  try {
-    return res.json(res.searchedEvents);
-  } catch (err) {
-    return next(err);
-  }
-});
+app.get('/api/events', handleEventSearch(Event));
 
 function handleEventSearch(model) {
   return async (req, res, next) => {
     const { location, date, minPrice, maxPrice } = req.query;
-    let findObject = {};
+    const findObject = {};
     if (location) {
-      findObject = {location: {$regex: location, $options: 'i'}};
+      findObject.location = {$regex: location, $options: 'i'};
     }
     if (date) {
-      findObject = {date: new Date(date)};
+      findObject.date = new Date(date);
     }
     if (minPrice || maxPrice) {
-      findObject = {price: {$lt: maxPrice ? maxPrice : Infinity, $gt: minPrice ? minPrice : 0}};
+      findObject.price = {$lt: maxPrice ? maxPrice : Infinity, $gt: minPrice ? minPrice : 0};
     }
+    console.log(findObject);
     const query = await model.find(findObject);
-    res.searchedEvents = query;
-    next();
+    return res.json(query);
   };
 }
 
