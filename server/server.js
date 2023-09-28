@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import * as path from 'path';
 import Event from './model/Event.js';
+import { log } from 'console';
 
 dotenv.config();
 const MONGO_URL = process.env.MONGO_URL;
@@ -12,14 +13,33 @@ app.use(express.json());
 app.use('/public/', express.static(path.resolve('./public')));
 
 
-app.get('/api/events', async (req, res, next) => {
+app.get('/api/events', handleEventSearch(Event), async (req, res, next) => {
   try {
-    const allEvenets = await Event.find();
-    return res.json(allEvenets);
+    return res.json(res.searchedEvents);
   } catch (err) {
     return next(err);
   }
 });
+
+function handleEventSearch(model) {
+  return async (req, res, next) => {
+    const { location, date, minPrice, maxPrice } = req.query;
+    let findObject = {};
+    if (location) {
+      findObject = {location: {$regex: location, $options: 'i'}};
+    }
+    if (date) {
+      findObject = {date: new Date(date)};
+    }
+    if (minPrice || maxPrice) {
+      findObject = {price: {$lt: maxPrice ? maxPrice : Infinity, $gt: minPrice ? minPrice : 0}};
+    }
+    const query = await model.find(findObject);
+    res.searchedEvents = query;
+    next();
+  };
+}
+
 
 app.get('/api/events/:id', async (req, res, next) => {
   try {
