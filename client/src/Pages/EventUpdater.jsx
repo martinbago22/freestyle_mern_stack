@@ -2,16 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Form from "../components/eventform/Form";
 import fetchByMethod from "../functions/fetchByMethod";
-import { useNavigate } from "react-router-dom";
 import Notify from "../components/notify/Notify";
-
 
 export default function EventUpdater() {
 
   const [event, setEvent] = useState(null);
   const [updatedEvent, setUpdatedEvent] = useState(false);
   const { id } = useParams();
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     async function fetchEvent() {
