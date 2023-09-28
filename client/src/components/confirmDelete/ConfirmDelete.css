@@ -1,0 +1,22 @@
+.DeleteWindow {
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+  background-color: rgb(50, 47, 47);
+  color:#e5eaf5;
+  font-size: 38px;
+}
+
+.DeleteButton{
+  margin: 10px 5px 5px 5px;
+  background-color: rgb(198, 23, 23);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.DeleteButton:hover{
+  background-color: rgb(253, 87, 87);
+  font-weight: bold;
+}
