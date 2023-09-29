@@ -16,7 +16,7 @@ app.use('/public/', express.static(path.resolve('./public')));
 app.get('/api/events', handleEventSearch(Event));
 
 function handleEventSearch(model) {
-  return async (req, res, next) => {
+  return async (req, res) => {
     const { location, date, minPrice, maxPrice } = req.query;
     const findObject = {};
     if (location) {
