@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import * as path from 'path';
 import Event from './model/Event.js';
-import { log } from 'console';
 
 dotenv.config();
 const MONGO_URL = process.env.MONGO_URL;
@@ -13,23 +12,27 @@ app.use(express.json());
 app.use('/public/', express.static(path.resolve('./public')));
 
 
-app.get('/api/events', handleEventSearch(Event));
+app.get('/api/events', createEventSearchHandler());
 
-function handleEventSearch(model) {
-  return async (req, res) => {
-    const { location, date, minPrice, maxPrice } = req.query;
-    const findObject = {};
-    if (location) {
-      findObject.location = {$regex: location, $options: 'i'};
+function createEventSearchHandler() {
+  return async (req, res, next) => {
+    try {
+      const { location, date, minPrice, maxPrice } = req.query;
+      const filter = {};
+      if (location) {
+        filter.location = { $regex: location, $options: 'i' };
+      }
+      if (date) {
+        filter.date = new Date(date);
+      }
+      if (minPrice || maxPrice) {
+        filter.price = { $lt: maxPrice ? maxPrice : Infinity, $gt: minPrice ? minPrice : 0 };
+      }
+      const events = await Event.find(filter);
+      return res.json(events);
+    } catch (err) {
+      return next(err);
     }
-    if (date) {
-      findObject.date = new Date(date);
-    }
-    if (minPrice || maxPrice) {
-      findObject.price = {$lt: maxPrice ? maxPrice : Infinity, $gt: minPrice ? minPrice : 0};
-    }
-    const query = await model.find(findObject);
-    return res.json(query);
   };
 }
 
@@ -71,8 +74,8 @@ app.post('/api/events', async (req, res) => {
       location,
       available,
     });
-    const events = await newEvent.save();
-    return res.json(events);
+    const event = await newEvent.save();
+    return res.json(event);
   } catch (error) {
     console.error(error);
     return res.status(400).json({ success: false });
