@@ -25,9 +25,15 @@ export default function Home() {
     setEvents(events);
   }
 
+  async function handleReset() {
+    const response = await fetch('/api/events');
+    const allEvents = await response.json();
+    setEvents(allEvents);
+  }
+
   return events ? (
     <div className="EventContainer">
-      <SearchForm onSearch={handleSearch}></SearchForm>
+      <SearchForm onSearch={handleSearch} onReset={handleReset}></SearchForm>
       {events.map((event) => <EventDetails key={event._id} event={event} />)}
     </div>
   ) : ( <h1>Loading Site</h1> );
