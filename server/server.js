@@ -94,6 +94,24 @@ app.patch('/api/events/:id', async (req, res) => {
   }
 });
 
+app.patch('/api/tickets/:id', async (req, res, next) => {
+  try {
+    const event = await Event.findById(req.params.id);
+    const tickets = req.body.tickets;
+    if (event.available >= Math.abs(tickets)) {
+      const soldTicket = await Event.updateOne(
+        { _id: req.params.id },
+        { $inc: {'available': tickets} },
+        { new: true },
+      );
+      return res.json(soldTicket);
+    }
+    return res.status(404).send({'available': event.available});
+  } catch (err) {
+    return next(err);
+  }
+});
+
 async function main() {
   await mongoose.connect(MONGO_URL);
   app.listen(5000, () => {

@@ -1,0 +1,21 @@
+.ConfirmText{
+  color: white;
+  font-size: 50px;
+  }
+
+.ConfirmContainer{
+  background-color: rgb(50, 47, 47);
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.HomeButton{
+  margin: 10px 5px 5px 5px;
+  background-color: rgb(198, 23, 23);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}

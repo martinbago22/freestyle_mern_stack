@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom"
 import './EventDetail.css'
 
-export default function EventDetails({ event, onDelete }) {
+export default function EventDetails({ event, onDelete, onBuy }) {
   return (
     <div className="Event">
-      <div className="EventName">{event.name}</div>
+      <div className="EventHeader">
+        <div>{event.name}</div>
+      {event.available === 0 ? <div>SOLD OUT</div> :
+       <button className="BuyTicketButton" onClick={() => onBuy(event._id)}>Buy tickets</button>}
+      </div>
       <div className="EventIMG">
         <img src={event.image}></img>
       </div>
