@@ -8,14 +8,16 @@
   color: rgb(230, 230, 230);
 }
 
-.EventName{
+.EventHeader{
   background-color: rgb(198, 23, 23);
   height: 40px;
   padding: 5px;
   color: white;
   font-size: 25px;
   border-radius: 5px 5px 0px 0px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+  justify-content: space-between;
 }
 
 img{
@@ -55,4 +57,17 @@ img{
 .EventButton:hover{
   background-color: rgb(253, 87, 87);
   font-weight: bold;
+}
+
+.BuyButton{
+  border-radius: 5px;
+  border-width: 0px;
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: yellow;
+}
+
+.BuyButton:hover{
+  font-size: 16px;;
 }

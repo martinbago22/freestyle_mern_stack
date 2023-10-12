@@ -4,9 +4,10 @@ import './EventDetail.css'
 export default function EventDetails({ event, onDelete, onBuy }) {
   return (
     <div className="Event">
-      <div className="EventName">
+      <div className="EventHeader">
         <div>{event.name}</div>
-      {event.available === 0 ? <div>SOLD OUT</div> : <button onClick={() => onBuy(event._id)}>Buy tickets</button>}
+      {event.available === 0 ? <div>SOLD OUT</div> :
+       <button className="BuyButton" onClick={() => onBuy(event._id)}>Buy tickets</button>}
       </div>
       <div className="EventIMG">
         <img src={event.image}></img>
