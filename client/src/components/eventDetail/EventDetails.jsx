@@ -7,7 +7,7 @@ export default function EventDetails({ event, onDelete, onBuy }) {
       <div className="EventHeader">
         <div>{event.name}</div>
       {event.available === 0 ? <div>SOLD OUT</div> :
-       <button className="BuyButton" onClick={() => onBuy(event._id)}>Buy tickets</button>}
+       <button className="BuyTicketButton" onClick={() => onBuy(event._id)}>Buy tickets</button>}
       </div>
       <div className="EventIMG">
         <img src={event.image}></img>

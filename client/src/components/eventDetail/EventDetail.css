@@ -59,7 +59,7 @@ img{
   font-weight: bold;
 }
 
-.BuyButton{
+.BuyTicketButton{
   border-radius: 5px;
   border-width: 0px;
   color: red;
@@ -68,6 +68,6 @@ img{
   background-color: yellow;
 }
 
-.BuyButton:hover{
+.BuyTicketButton:hover{
   font-size: 16px;;
 }
