@@ -7,6 +7,8 @@ import Home from './Pages/Home';
 import DeleteEvent from './Pages/DeleteEvent';
 import EventCreator from './Pages/EventCreator';
 import EventUpdater from './pages/EventUpdater';
+import BuyTickets from './pages/BuyTickets';
+import Checkout from './pages/Checkout';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +30,15 @@ const router = createBrowserRouter([
       {
         path: '/event/update/:id',
         element: <EventUpdater />
-      }
+      },
+      {
+        path: '/tickets/:id',
+        element: <BuyTickets />
+      },
+      {
+        path: '/checkout',
+        element: <Checkout />
+      },
     ]
   }
 ])
