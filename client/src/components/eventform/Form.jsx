@@ -3,7 +3,7 @@ import './eventForm.css'
 
 export default function Form({ event, onSave }) { // Ha upgradelünk az event propban érkezne a szerkeszteni kívánt event
 
-    const [formData, setFormData] = useState(null);
+    const [formData, setFormData] = useState({});
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -14,14 +14,17 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
     };
 
     return (
-        <form onSubmit={(e) => onSave(e, formData)}>
+        <form onSubmit={(e) => {
+            e.preventDefault();
+            onSave(formData)
+        }}>
             <div className='control'>
                 <label htmlFor='eventName'>Name: </label>
                 <input
                     type="text"
                     name="name"
                     id='eventName'
-                    defaultValue={event ? event.name : ''}
+                    value={formData?.name ?? event?.name ?? ''}
                     onChange={handleInputChange}
                 />
             </div>
@@ -31,7 +34,7 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
                     type="text"
                     name="location"
                     id='eventLocation'
-                    defaultValue={event ? event.location : ''}
+                    value={formData?.location ?? event?.location ?? ''}
                     onChange={handleInputChange}
                 />
             </div>
@@ -41,7 +44,7 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
                     type="date"
                     name="date"
                     id='eventDate'
-                    defaultValue={event ? event.date.slice(0, 10) : ''}
+                    value={formData?.date ?? event?.date.slice(0, 10) ?? ''}
                     onChange={handleInputChange}
                 />
             </div>
@@ -51,7 +54,7 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
                     type="number"
                     name="price"
                     id='eventPrice'
-                    defaultValue={event ? event.price : ''}
+                    value={formData?.price ?? event?.price ?? ''}
                     onChange={handleInputChange}
                 />
             </div>
@@ -61,24 +64,17 @@ export default function Form({ event, onSave }) { // Ha upgradelünk az event pr
                     type="number"
                     name="available"
                     id='eventAvailable'
-                    defaultValue={event ? event.available : ''}
+                    value={formData?.available ?? event?.available ?? ''}
                     onChange={handleInputChange}
                 />
             </div>
             <div className='controlDetails'>
                 <label htmlFor='eventDetails'>Details: </label>
-                {/* <input
-                    type="text"
-                    name="details"
-                    id='eventDetails'
-                    defaultValue={event ? event.details : ''}
-                    onChange={handleInputChange}
-                /> */}
                 <textarea
                     type="text"
                     name="details"
                     id='eventDetails'
-                    defaultValue={event ? event.details : ''}
+                    value={formData?.details ?? event?.details ?? ''}
                     onChange={handleInputChange}
                     rows='6'
                     cols='40'

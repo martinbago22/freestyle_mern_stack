@@ -1,7 +1,7 @@
 import { useState } from "react"
 import './SearchForm.css';
 
-export default function SearchForm({ onSearch }) {
+export default function SearchForm({ onSearch, onReset }) {
 
   const [userSearch, setUserSearch] = useState({});
 
@@ -60,6 +60,7 @@ export default function SearchForm({ onSearch }) {
         </div>
         <div className='SearchButtonContainer'>
           <button className='SearchButton' type="submit">Search</button>
+          <button className="ResetButton" onClick={onReset}type="button">Reset filter</button>
         </div>
       </form>
     </div>

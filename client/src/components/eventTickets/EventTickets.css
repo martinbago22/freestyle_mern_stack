@@ -1,0 +1,41 @@
+.TicketContainer {
+  background-color: rgb(50, 47, 47);
+  color: white;
+  height: 20vh;
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.BuyButton {
+  background-color: rgb(198, 23, 23);
+  height: 40px;
+  width: 60px;
+  color: white;
+  padding: 5px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.BuyButton:hover {
+  background-color: rgb(253, 87, 87);
+}
+
+.TicketDetails {
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.TicketSelect{
+  height: 30px;
+  width: 50px;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: rgb(198, 23, 23);
+  color: white;
+}

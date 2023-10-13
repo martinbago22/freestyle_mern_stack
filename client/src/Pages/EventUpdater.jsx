@@ -20,8 +20,7 @@ export default function EventUpdater() {
     fetchEvent();
   }, [id]);
 
-  async function handleUpdate(e, event) {
-    e.preventDefault();
+  async function handleUpdate(event) {
     try {
       const response = await fetchByMethod(`/api/events/${id}`, 'PATCH', event);
       if (response.ok) {
