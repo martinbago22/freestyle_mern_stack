@@ -11,9 +11,36 @@ const app = express();
 app.use(express.json());
 app.use('/public/', express.static(path.resolve('./public')));
 
+app.get('/api/pagination', async (req, res, next) => {
+  try {
+    let { page, eventPerPage } = req.query;
+    page = Number(page) - 1;
+    eventPerPage = Number(eventPerPage);
+    const events = await Event.find().skip(page * eventPerPage).limit(eventPerPage);
+    return res.json(events);
+  } catch (error) {
+    return next(error);
+  }
+});
 
 app.get('/api/events', createEventSearchHandler());
 
+function handleEventSearch(model) {
+  return async (req, res) => {
+    const { location, date, minPrice, maxPrice } = req.query;
+    const findObject = {};
+    if (location) {
+      findObject.location = { $regex: location, $options: 'i' };
+    }
+    if (date) {
+      findObject.date = new Date(date);
+    }
+    if (minPrice || maxPrice) {
+      findObject.price = { $lt: maxPrice ? maxPrice : Infinity, $gt: minPrice ? minPrice : 0 };
+    }
+    const query = await model.find(findObject);
+    return res.json(query);
+    
 function createEventSearchHandler() {
   return async (req, res, next) => {
     try {

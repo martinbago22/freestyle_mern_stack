@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import EventDetails from "../components/eventDetail/EventDetails";
 import SearchForm from "../components/searchForm/SearchForm";
+import Pagination from "../components/Pagination/Pagination";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -8,23 +9,9 @@ export default function Home() {
   const [events, setEvents] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-      const response = await fetch('/api/events');
-      const allEvents = await response.json()
-      setEvents(allEvents);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    fetchEvents()
-  }, []);
-
   async function handleSearch(query) {
     const response = await fetch(`/api/events?${query}`);
-    const events = await response.json();
-    setEvents(events);
+    return await response.json();
   }
 
   async function handleReset() {
@@ -45,6 +32,5 @@ export default function Home() {
       event={event}
       onBuy={handleBuy}/>)}
     </div>
-  ) : ( <h1>Loading Site</h1> );
-
+  )
 }
